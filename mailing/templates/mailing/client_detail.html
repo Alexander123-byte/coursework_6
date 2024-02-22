@@ -1,0 +1,18 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <div class="col-6">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <h4 class="card-title pricing-card-title">{{object.owner}}</h4>
+                    <a href="{% url 'mailing:client_update' object.pk %}" type="button col-4"
+                       class="btn btn-lg btn-block btn-outline-primary">Редактировать</a>
+                    <a href="{% url 'mailing:client_delete' object.pk %}" type="button col-4"
+                       class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

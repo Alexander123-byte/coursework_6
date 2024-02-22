@@ -1,0 +1,38 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h2 class="display-4">СПИСОК СООБЩЕНИЙ ДЛЯ РАССЫЛОК</h2>
+        <p class="lead">Здесь вы можете создать свое сообщение для рассылки</p>
+    </div>
+
+    <div class="container">
+        <div class="row text-center">
+
+
+            <div class="col-12">
+
+                <a class="btn btn-lg btn-block btn-outline-primary mb-5" href="{% url 'mailing:message_create' %}">Добавить
+                    сообщение для рассылки</a>
+
+            </div>
+
+            {% for object in object_list %}
+                <div class="col-3">
+                    <div class="card mb-4 box-shadow">
+
+                        <div class="card-header">
+                            <h2 class="my-0 font-weight-normal">{{ object.title }}</h2>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title pricing-card-title">{{ object.message }}</h4>
+
+                            <a href="{% url 'mailing:message' object.pk %}" type="button"
+                               class="btn btn-lg btn-block btn-outline-primary">Перейти к сообщению</a>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

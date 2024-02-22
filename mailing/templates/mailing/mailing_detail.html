@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-6">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h2 class="my-0 font-weight-normal">{{ object.mailing_name }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title pricing-card-title">{{ object.owner }}</h4>
+                        <ul class="list-unstyled mt-3 mb-4 text-center m-3">
+                            <li>{{ object.sent_time }}</li>
+                            <li>{{ object.periodicity }}</li>
+                            <li>{{ object.mailing_status }}</li>
+                            <li>{{ object.message }}</li>
+                        </ul>
+                        {% if object.owner == user or user.is_superuser %}
+                            <a href="{% url 'mailing:mailing_update' object.pk %}" type="button col-4"
+                               class="btn btn-lg btn-block btn-outline-primary">Редактировать</a>
+                            <a href="{% url 'mailing:mailing_delete' object.pk %}" type="button col-4"
+                               class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+                        {% elif perms.mailing.set_deactivate %}
+                            <a href="{% url 'mailing:mailing_update' object.pk %}" type="button col-4"
+                               class="btn btn-lg btn-block btn-outline-primary">Редактировать</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

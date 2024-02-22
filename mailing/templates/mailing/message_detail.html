@@ -1,0 +1,25 @@
+{% extends 'mailing/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-6">
+                <div class="card mb-4 box-shadow">
+
+                    <div class="card-header">
+                        <h2 class="my-0 font-weight-normal">{{ object.title }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title pricing-card-title">{{ object.message }}</h4>
+
+                        <a href="{% url 'mailing:message_update' object.pk %}" type="button col-4"
+                           class="btn btn-lg btn-block btn-outline-primary">Редактировать</a>
+
+                        <a href="{% url 'mailing:message_delete' object.pk %}" type="button col-4"
+                           class="btn btn-lg btn-block btn-outline-danger">Удалить</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
