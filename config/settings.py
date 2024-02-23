@@ -153,18 +153,15 @@ SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-# CACHE_ENABLED = os.getenv('CACHE_ENABLED') == '1'
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-#         "LOCATION": os.getenv('CACHE_LOCATION'),
-#     }
-# }
+CACHE_ENABLED = os.getenv('CACHE_ENABLED') == '1'
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": os.getenv('CACHE_LOCATION'),
+    }
+}
 
 CRONJOBS = [
 
     ('* * * * *', 'app_crontab.crontab.schedule_mailing'),
-    # ('1 0 * * *', 'app_cronjob.crontab.schedule_daily'),
-    # ('1 0 * * 0', 'app_cronjob.crontab.schedule_weekly'),
-    # ('0 0 1 * *', 'app_cronjob.crontab.schedule_monthly')
 ]

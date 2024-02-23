@@ -1,6 +1,7 @@
 from mailing import forms
 from mailing.forms import StyleFormMixin
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django import forms
 
 from users.models import User
 

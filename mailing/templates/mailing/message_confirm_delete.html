@@ -8,8 +8,8 @@
                     <form method="post">
                         {% csrf_token %}
                         <p>Удалить "{{object.title}}"?</p>
-                        <button type="submit" href="{% url 'mailing:message_list' %}" class="btn btn-danger">Подтвердить</button>
-                        <a href="{% url 'mailing:message_list'%}" class="btn btn-warning">Отмена</a>
+                        <button type="submit" href="{% url 'mailing:message_list'  %}" class="btn btn-danger">Подтвердить</button>
+                        <a href="{% url 'mailing:message_list' %}" class="btn btn-warning">Отмена</a>
                     </form>
                 </div>
             </div>

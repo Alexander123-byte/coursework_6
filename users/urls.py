@@ -2,10 +2,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from django.urls import path
-from django.contrib.auth.views import LoginView, LogoutView
 
 from users.apps import UsersConfig
-from users.views import RegisterView, activate, VerificationFailedView, UserUpdateView, UserListView, toggle_active
+from users.views import RegisterView, activate, VerificationFailedView, UserUpdateView, LoginView, LogoutView, \
+    UserListView, toggle_active
 
 app_name = UsersConfig.name
 

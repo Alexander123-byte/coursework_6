@@ -21,7 +21,7 @@ def index(request):
     articles = Blog.objects.order_by('?')[:3]
     context = {'count_mailing': count_mailing, 'active_mailing': active_mailing,
                'count_unique_client': count_unique_client, 'articles': articles}
-    return render(request, 'users/index.html', context)
+    return render(request, 'mailing/index.html', context)
 
 
 class MailingListView(LoginRequiredMixin, ListView):
@@ -47,7 +47,7 @@ class MailingCreateView(LoginRequiredMixin, UserRequiredMixin, CreateView):
 
     def form_valid(self, form):
         self.object = form.save()
-        self.object.user = self.request.user
+        self.object.owner = self.request.user
         self.object.save()
         return super().form_valid(form)
 
@@ -60,7 +60,7 @@ class MailingUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('mailing:mailing_list')
 
     def get_form_class(self):
-        if self.request.user == self.object.user or self.request.user.is_superuser:
+        if self.request.user == self.object.owner or self.request.user.is_superuser:
             return MailingForm
         elif self.request.user.has_perm('mailing.set_deactivate'):
             return ManagerMailingForm

@@ -19,6 +19,7 @@ class Client(models.Model):
         verbose_name_plural = 'клиенты'
         unique_together = (('owner', 'client_email',),)
 
+
 class Message(models.Model):
     """Модель сообщения в рассылке"""
     title = models.CharField(max_length=150, verbose_name='тема сообщения')
@@ -71,6 +72,10 @@ class Mailing(models.Model):
                 'set_deactivate',
                 'Can deactivate mailing'
             ),
+            (
+                'view_all_mailings',
+                'Can view all mailing'
+            ),
         ]
 
 
@@ -94,6 +99,3 @@ class Logs(models.Model):
     class Meta:
         verbose_name = 'попытка отправки'
         verbose_name_plural = 'попытки отправки'
-
-
-

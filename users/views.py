@@ -52,7 +52,7 @@ class RegisterView(CreateView):
         verification_url = self.request.build_absolute_uri(verification_url)
         send_mail(
             subject='Поздравляем с регистрацией',
-            message=render_to_string('users/verify_email.txt', {'verification_url': verification_url}),
+            message=render_to_string('users/verify_email.html', {'verification_url': verification_url}),
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[new_user.email],
             fail_silently=False
