@@ -34,7 +34,7 @@ class MailingListView(LoginRequiredMixin, ListView):
         if self.request.user.has_perm('mailing.view_all_mailings'):
             mailing_list = super().get_queryset()
         else:
-            mailing_list = super().get_queryset().filter(user_id=self.request.user)
+            mailing_list = super().get_queryset().filter(owner_id=self.request.user)
         return mailing_list
 
 
@@ -72,10 +72,6 @@ class MailingDetailView(UserRequiredMixin, DetailView):
     """Класс для просмотра отдельной рассылки"""
 
     model = Mailing
-    #
-    # def get_queryset(self):
-    #     queryset = super().get_queryset()
-    #     return queryset
 
 
 class MailingDeleteView(LoginRequiredMixin, UserRequiredMixin, DeleteView):
@@ -120,10 +116,6 @@ class MessageDetailView(DetailView):
     Класс для отображения страницы отдельного сообщения
     """
     model = Message
-
-    # def get_queryset(self):
-    #     queryset = super().get_queryset()
-    #     return queryset
 
 
 class MessageDeleteView(LoginRequiredMixin, DeleteView):

@@ -22,11 +22,10 @@ class User(AbstractUser):
         verbose_name_plural = 'пользователи'
         permissions = [
             (
-             'set_user_deactivate',
-             'Can deactivate user'
+                'set_user_deactivate',
+                'Can deactivate user'
             ),
             ('view_all_users',
              'просмотр всех пользователей'
              ),
         ]
-
