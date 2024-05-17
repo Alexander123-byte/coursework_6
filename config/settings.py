@@ -85,10 +85,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mailing',
-        'USER': os.getenv('POSTGRES_USER'),
-        'PORT': 5433,
-        'PASSWORD': os.getenv('DATABASES_PASSWORD')
+        'NAME': 'coursework_6',
+        'USER': os.getenv('USER'),
+        'PORT': 5432,
+        'PASSWORD': os.getenv('PASSWORD')
     }
 }
 
