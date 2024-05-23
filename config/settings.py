@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_crontab',
+    'django_apscheduler',
     
     'app_crontab',
     'users',
@@ -162,6 +163,5 @@ CACHES = {
 }
 
 CRONJOBS = [
-
-    ('* * * * *', 'app_crontab.crontab.schedule_mailing'),
+    ('* * * * *', 'mailing.services.start_mailing'),
 ]
