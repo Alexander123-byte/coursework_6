@@ -41,8 +41,7 @@ INSTALLED_APPS = [
 
     'django_crontab',
     'django_apscheduler',
-    
-    'app_crontab',
+
     'users',
     'mailing',
     'blog'
